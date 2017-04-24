@@ -68,7 +68,12 @@ public class UserResource
     {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
-        Authentication authentication = this.authManager.authenticate(authenticationToken);
+        Authentication authentication =null;
+        /*try{*/
+        	authentication = this.authManager.authenticate(authenticationToken);
+        /*}catch (Exception e) {
+        	 throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}*/
         SecurityContextHolder.getContext().setAuthentication(authentication);
         Object principal = authentication.getPrincipal();
         if (!(principal instanceof Users)) {

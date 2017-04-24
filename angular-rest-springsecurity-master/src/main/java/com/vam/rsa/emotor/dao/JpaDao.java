@@ -3,6 +3,7 @@ package com.vam.rsa.emotor.dao;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vam.rsa.emotor.entity.Entity;
+import com.vam.rsa.emotor.entity.Users;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

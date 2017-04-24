@@ -10,4 +10,6 @@ public interface UserDao extends Dao<Users, Long>
     Users loadUserByUsername(String username) throws UsernameNotFoundException;
 
     Users findByName(String name);
+    
+    Users validateUser(String name,String password);
 }

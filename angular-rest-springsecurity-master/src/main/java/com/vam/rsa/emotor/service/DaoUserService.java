@@ -63,4 +63,11 @@ public class DaoUserService implements UserService
         AccessToken accessToken = new AccessToken(user, UUID.randomUUID().toString());
         return this.accessTokenDao.save(accessToken);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails validateUser(String username,String password) throws UsernameNotFoundException
+    {
+        return this.userDao.validateUser(username, password);
+    }
 }

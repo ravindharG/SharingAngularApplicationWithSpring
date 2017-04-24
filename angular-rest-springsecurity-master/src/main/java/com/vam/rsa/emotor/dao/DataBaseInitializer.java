@@ -27,13 +27,13 @@ public class DataBaseInitializer
 
     public void initDataBase()
     {
-        Users userUser = new Users("users", this.passwordEncoder.encode("users"));
+       /* Users userUser = new Users("users", this.passwordEncoder.encode("users"));
         userUser.addRole(Role.USER);
         this.userDao.save(userUser);
 
         Users adminUser = new Users("admin", this.passwordEncoder.encode("admin"));
         adminUser.addRole(Role.USER);
         adminUser.addRole(Role.ADMIN);
-        this.userDao.save(adminUser);
+        this.userDao.save(adminUser);*/
     }
 }

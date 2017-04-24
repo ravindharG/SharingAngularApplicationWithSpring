@@ -37,8 +37,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
                             if (status == 401) {
                                 $location.path("/login");
                             } else {
-                                /*$rootScope.error = method + " on " + url + " failed with status " + status;*/
-                            	$rootScope.error ="Invalid User!!";
+                                $rootScope.error = method + " on " + url + " failed with status " + status;
+                            	/*$rootScope.error ="Invalid User!!";*/
                             }
 
                             return $q.reject(rejection);
@@ -149,8 +149,9 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
     	UserService.authenticate($.param({
             username: $scope.username,
             password: $scope.password
-        }), function (authenticationResult) {
-        	var accessToken = authenticationResult.token;
+        }), 
+        function (authenticationResult) {
+    		var accessToken = authenticationResult.token;
         	$rootScope.accessToken = accessToken;
             if ($scope.rememberMe) {
                 $cookieStore.put('accessToken', accessToken);
@@ -159,7 +160,10 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
                 $rootScope.user = user;
                 $location.path("/");
             });
-        });
+        },
+    	function(error){
+        	 $scope.error = 'Invalid UserName or Password';
+    	});
     };
 }
 
